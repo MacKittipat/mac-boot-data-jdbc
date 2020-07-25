@@ -1,5 +1,5 @@
-INSERT INTO customer VALUES (1, 'Mac');
-INSERT INTO customer VALUES (2, 'Java');
+INSERT INTO customer VALUES (1, 'Mac', 31);
+INSERT INTO customer VALUES (2, 'Java', 40);
 
 INSERT INTO subject VALUES (1, 'Intro to Programming');
 INSERT INTO subject VALUES (2, 'Mathematics');

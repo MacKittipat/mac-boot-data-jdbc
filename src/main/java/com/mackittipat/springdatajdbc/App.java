@@ -13,6 +13,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories;
 
+import java.util.Collection;
+
 @Slf4j
 @EnableJdbcRepositories
 @SpringBootApplication
@@ -40,6 +42,11 @@ public class App implements CommandLineRunner {
 
         Iterable<Customer> customers = customerRepository.findAll();
         customers.forEach(c -> log.info("Query customer : {}", c.toString()));
+
+        log.info("Query customer by name : {}", customerRepository.findByName("Python").get());
+
+        Iterable<Customer> customerByAges = customerRepository.findByAge(31);
+        log.info("Count customer by age : {}", ((Collection<Customer>) customerByAges).size());
 
         // One to Many
         Iterable<Subject> subjects = categoryRepository.findAll();

@@ -19,7 +19,7 @@ CREATE TABLE student (
 
 CREATE TABLE book (
     id INT IDENTITY PRIMARY KEY,
-    title VARCHAR(20),
+    book_title VARCHAR(20),
     price DOUBLE
 );
 

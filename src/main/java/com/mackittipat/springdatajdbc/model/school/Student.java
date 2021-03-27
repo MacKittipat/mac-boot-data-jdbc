@@ -1,4 +1,4 @@
-package com.mackittipat.springdatajdbc.model;
+package com.mackittipat.springdatajdbc.model.school;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

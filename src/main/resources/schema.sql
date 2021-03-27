@@ -15,6 +15,8 @@ CREATE TABLE student (
     subject INT REFERENCES subject(id)
 );
 
+-------------------------------------------------------
+
 CREATE TABLE book (
     id INT IDENTITY PRIMARY KEY,
     title VARCHAR(20),

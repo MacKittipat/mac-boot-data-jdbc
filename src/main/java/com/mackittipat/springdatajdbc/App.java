@@ -1,11 +1,11 @@
 package com.mackittipat.springdatajdbc;
 
-import com.mackittipat.springdatajdbc.model.Book;
-import com.mackittipat.springdatajdbc.model.Customer;
-import com.mackittipat.springdatajdbc.model.Subject;
-import com.mackittipat.springdatajdbc.repository.BookRepository;
-import com.mackittipat.springdatajdbc.repository.CategoryRepository;
-import com.mackittipat.springdatajdbc.repository.CustomerRepository;
+import com.mackittipat.springdatajdbc.model.bookstore.Book;
+import com.mackittipat.springdatajdbc.model.bookstore.Customer;
+import com.mackittipat.springdatajdbc.model.school.Subject;
+import com.mackittipat.springdatajdbc.repository.bookstore.BookRepository;
+import com.mackittipat.springdatajdbc.repository.school.SubjectRepository;
+import com.mackittipat.springdatajdbc.repository.bookstore.CustomerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -27,7 +27,7 @@ public class App implements CommandLineRunner {
     private BookRepository bookRepository;
 
     @Autowired
-    private CategoryRepository categoryRepository;
+    private SubjectRepository subjectRepository;
 
     public static void main( String[] args ) {
         SpringApplication.run(App.class, args);
@@ -38,23 +38,23 @@ public class App implements CommandLineRunner {
         Customer customer = new Customer();
         customer.setName("Python");
         customerRepository.save(customer);
-        log.info("Inserted customer table");
+        log.info(">>>>> Inserted customer table");
 
         Iterable<Customer> customers = customerRepository.findAll();
-        customers.forEach(c -> log.info("Query customer : {}", c.toString()));
+        customers.forEach(c -> log.info(">>>>> Query customer : {}", c.toString()));
 
-        log.info("Query customer by name : {}", customerRepository.findByName("Python").get());
+        log.info(">>>>> Query customer by name : {}", customerRepository.findByName("Python").get());
 
         Iterable<Customer> customerByAges = customerRepository.findByAge(31);
-        log.info("Count customer by age : {}", ((Collection<Customer>) customerByAges).size());
+        log.info(">>>>> Count customer by age : {}", ((Collection<Customer>) customerByAges).size());
 
         // One to Many
-        Iterable<Subject> subjects = categoryRepository.findAll();
-        subjects.forEach(sub -> log.info("Query subjects : {}", sub.toString()));
+        Iterable<Subject> subjects = subjectRepository.findAll();
+        subjects.forEach(sub -> log.info(">>>>> Query subjects : {}", sub.toString()));
 
         // One to One
         Iterable<Book> books = bookRepository.findAll();
-        books.forEach(b -> log.info("Query book : {}", b.toString()));
+        books.forEach(b -> log.info(">>>>> Query book : {}", b.toString()));
 
     }
 }
